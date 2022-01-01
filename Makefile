@@ -209,6 +209,11 @@ install_docs: docs
 
 .SUFFIXES: .scd .1 .2 .3 .4 .5 .6 .7 .8
 
+install_debian: all
+       install -D -m755 dist/debian/networking /usr/local/sbin/ifupdown-ng/networking
+       install -m755 dist/debian/networking.default /etc/default/networking
+       install -m755 dist/debian/ifupdown-ng.networking.service /etc/systemd/networking.service
+
 DIST_NAME = ${PACKAGE_NAME}-${PACKAGE_VERSION}
 DIST_TARBALL = ${DIST_NAME}.tar.xz
 
